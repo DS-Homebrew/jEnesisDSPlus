@@ -1,6 +1,6 @@
 # jEnesisDS Plus
 
-An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) (based on v0.7.4, the last version released) with support for ROMs up to 4MB (if running on DS debug or DSi consoles).
+An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) with support for ROMs up to 4MB (if running on DS debug or DSi consoles).
 
 # Compiling
 
