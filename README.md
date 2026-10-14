@@ -21,7 +21,9 @@ An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) with suppo
 
 1. Open your hex editor
 1. Open `jEnesisDS.nds`
-1. Go to offset `0x414` and overwrite `E4` `11` `00` `02` with `04` `00` `09` `02` in order for the new code to run
+1. Go to these offsets and change the following bytes:
+    - `0x2F0`: `F8` `10` `9F` `E5` `B4` `20` `9F` `E5` `F4` `40` `9F` `E5` `1F` -> `B8` `00` `9F` `E5` `F8` `10` `9F` `E5` `00` `10` `41` `E0` `16`
+    - `0x414`: `E4` `11` `00` -> `04` `00` `09`
 1. Open `newCode.bin` inside the `newCode` folder
 1. Copy everything inside the file
 1. Go back to `jEnesisDS.nds`
