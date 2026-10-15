@@ -11,6 +11,7 @@ An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds
 
 1. Install [BlocksDS](https://blocksds.skylyrac.net/docs/setup/)
 1. Install a hex editor such as [HxD](https://mh-nexus.de/en/hxd/)
+1. Install [Lunar IPS](https://www.romhacking.net/utilities/240/) if you want the game to display on the bottom screen
 1. Download [jEnesisDS v0.7.4](https://gamebrew.org/wiki/JEnesisDS) (the last version released)
 
 ### Building code
@@ -37,5 +38,11 @@ An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds
 1. Go to offset `0x90204` and paste-write over the `00` bytes with the copied data from `newCode.bin`
 1. Save as a new file called `jEnesisDSPlus.nds`
 
+### Displaying the game on the bottom screen
+
+1. Make a copy of `jEnesisDSPlus.nds` named `jEnesisDSPlus_macro.nds`
+1. Apply the `macroMode.ips` patch to `jEnesisDSPlus_macro.nds`
+
 # Credits
 - Lordus: Developer of the original jEnesisDS emulator
+- [xonn83](https://github.com/xonn83): Bottom screen patch
