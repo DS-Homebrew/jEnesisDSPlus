@@ -44,7 +44,7 @@ enable4mbRomSupport:	@ Increase ROM size limit from 3MB (0x306800 bytes) to eith
 	mcr		p15, 0, r0, c6, c1, 0
 	cmp		r1, #0
 	ldreq	r0, =0x027FF017	@ MPU region 7: Keep user and header data uncached on DS debug consoles
-	ldrne	r0, =0x02FFF017	@ MPU region 7: Keep user and header data (DSi area) uncached on DSi consoles
+	ldrne	r0, =0x02FFF017	@ MPU region 7: Keep last 4KB of RAM uncached on DSi consoles
 	mcr		p15, 0, r0, c6, c7, 0
 
 	ldr		r0, =newRomArea
