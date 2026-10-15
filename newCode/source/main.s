@@ -16,7 +16,12 @@ newInit:
 	ldr		r0, =0x04004000	@ Check for DSi mode
 	ldrb	r0, [r0]
 	cmp		r0, #1
-	beq		enable4mbRomSupport
+	bne		newInit_dsMode
+	bl		extRamEnabled
+	cmp		r0, #1
+	bne		saveArgv
+	b		enable4mbRomSupport
+newInit_dsMode:
 	swi		0x0F0000		@ isDebugger: Check if DS is a debug model with 8MB of RAM
 	cmp		r0, #1
 	bne		saveArgv
