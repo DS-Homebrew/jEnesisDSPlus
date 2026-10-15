@@ -4,13 +4,17 @@
 #define getFolderContents 0x020032A8
 #define loadRom 0x02003418
 #define returnFromRomList 0x02003690
+#define afterSramAccessCheck 0x02004828
 #define newRomArea 0x023FF000
+#define newLargeRomArea 0x02800000
 @---------------------------------------------------------------------------------
 	.section ".init"
 	.arm
 @---------------------------------------------------------------------------------
 	b		newInit
 	b		loadRomFromArgv
+	b		copyFirst4MBofROM
+	b		checkRomBankRegister
 @---------------------------------------------------------------------------------
 newInit:
 	ldr		r0, =0x04004000	@ Check for DSi mode
@@ -20,37 +24,51 @@ newInit:
 	bl		extRamEnabled
 	cmp		r0, #1
 	bne		saveArgv
+	adr		r0, isDSi
+	mov		r1, #1
+	str		r1, [r0]
 	b		enable4mbRomSupport
 newInit_dsMode:
 	swi		0x0F0000		@ isDebugger: Check if DS is a debug model with 8MB of RAM
 	cmp		r0, #1
 	bne		saveArgv
-enable4mbRomSupport:	@ Increase ROM size limit from 3MB (0x306800 bytes) to 4MB (0x400000 bytes)
-	ldr		r0, =0x0200002D
-	mcr		p15, 0, r0, c6, c1, 0	@ MPU region 1: Expand from 4MB to 8MB of RAM
-	ldr		r0, =0x027FF017
-	mcr		p15, 0, r0, c6, c7, 0	@ MPU region 7: Leave user and header data uncached
+	mov		r1, #0
+enable4mbRomSupport:	@ Increase ROM size limit from 3MB (0x306800 bytes) to either 4MB (0x400000 bytes) on DS debug consoles, or 7.5MB (0x780000 bytes) on DSi consoles
+	cmp		r1, #0
+	ldreq	r0, =0x0200002D	@ MPU region 1: Expand from 4MB to 8MB of RAM on DS debug consoles
+	ldrne	r0, =0x0200002F	@ MPU region 1: Expand from 4MB to 16MB of RAM on DSi consoles
+	mcr		p15, 0, r0, c6, c1, 0
+	cmp		r1, #0
+	ldreq	r0, =0x027FF017	@ MPU region 7: Keep user and header data uncached on DS debug consoles
+	ldrne	r0, =0x02FFF017	@ MPU region 7: Keep user and header data (DSi area) uncached on DSi consoles
+	mcr		p15, 0, r0, c6, c7, 0
 
 	ldr		r0, =newRomArea
 	mov 	r3, #0
-	adr		r1, romAreaPtrs
+	adr		r4, romAreaPtrs
 newInit_loop:
-	ldr		r2, [r1, r3]
+	ldr		r2, [r4, r3]
 	str		r0, [r2]
 	add		r3, #4
-	cmp		r3, #0xE*4
+	cmp		r3, #0xD*4
 	bne		newInit_loop
 
-	mov		r0, #0x400000
-	ldr		r1, =0x02002058
-	str		r0, [r1]
+	cmp		r1, #0
+	moveq	r0, #0x400000
+	movne	r0, #0x780000
+	ldr		r2, =0x02002058
+	str		r0, [r2]
+	ldreq	r0, =newRomArea
+	ldrne	r0, =newLargeRomArea
+	strne	r0, [r2, #8]
 	b		saveArgv
+isDSi:
+.word 0
 .pool
 romAreaPtrs:
 .word 0x02001634
 .word 0x020016CC
 .word 0x02001AFC
-.word 0x02002060
 .word 0x02003B2C
 .word 0x02003C0C
 .word 0x02003C50
@@ -123,5 +141,36 @@ loadRomFromArgv_ret:
 	b		returnFromRomList
 romFromArgvLoaded:
 .word 0
+.pool
+@---------------------------------------------------------------------------------
+copyFirst4MBofROM:
+	push	{r4, lr}
+	ldr		r4, isDSi
+	cmp		r4, #0
+	moveq	r0, #1
+	popeq	{r4, pc}
+	bl		initRomBanks
+	ldr		r0, =newRomArea
+	mov		r1, #newLargeRomArea
+	mov		r2, #0x400000
+	bl		memcpy
+	mov		r0, #1
+	pop		{r4, pc}
+.pool
+@---------------------------------------------------------------------------------
+checkRomBankRegister:
+	ldr		r4, isDSi
+	cmp		r4, #0
+	ldreq	r3, =0xFF5ECF0D
+	beq		afterSramAccessCheck
+	ldr		r3, =0xA130F3
+	cmp		r0, r3
+	ldrge	r3, =0xA130FF
+	cmpge	r0, r3
+	ldrgt	r3, =0xFF5ECF0D
+	bgt		afterSramAccessCheck
+	push	{lr}
+	bl		loadRomBank
+	pop		{pc}
 .pool
 @---------------------------------------------------------------------------------
