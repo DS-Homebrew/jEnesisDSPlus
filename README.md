@@ -3,7 +3,7 @@
 An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds new features such as:
 
 - Support for ROMs up to 4MB (if running on DS debug or DSi consoles)
-- ARGV support, allowing ROMs to start from a homebrew launcher (such as [**TW**i**L**ight Menu++](https://github.com/DS-Homebrew/TWiLightMenu))
+- ARGV support, allowing a ROM to start when passed from a homebrew launcher (such as [**TW**i**L**ight Menu++](https://github.com/DS-Homebrew/TWiLightMenu))
 
 # Compiling
 
