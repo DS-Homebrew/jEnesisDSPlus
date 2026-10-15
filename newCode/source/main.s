@@ -29,7 +29,11 @@ newInit:
 	str		r1, [r0]
 	b		enable4mbRomSupport
 newInit_dsMode:
-	swi		0x0F0000		@ isDebugger: Check if DS is a debug model with 8MB of RAM
+	ldr		r1, =0x0280002D	@ MPU region 7: Uncached main memory for mirror checking
+	mcr		p15, 0, r1, c6, c7, 0
+	bl		isDSDebugConsole
+	ldr		r1, =0x0240002B
+	mcr		p15, 0, r1, c6, c7, 0
 	cmp		r0, #1
 	bne		saveArgv
 	mov		r1, #0
