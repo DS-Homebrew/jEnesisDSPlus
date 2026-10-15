@@ -1,6 +1,9 @@
 # jEnesisDS Plus
 
-An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) with support for ROMs up to 4MB (if running on DS debug or DSi consoles).
+An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds new features such as:
+
+- Support for ROMs up to 4MB (if running on DS debug or DSi consoles)
+- ARGV support, allowing ROMs to start from a homebrew launcher (such as [**TW**i**L**ight Menu++](https://github.com/DS-Homebrew/TWiLightMenu))
 
 # Compiling
 
@@ -23,7 +26,9 @@ An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) with suppo
 1. Open `jEnesisDS.nds`
 1. Go to these offsets and change the following bytes:
     - `0x2F0`: `F8` `10` `9F` `E5` `B4` `20` `9F` `E5` `F4` `40` `9F` `E5` `1F` -> `B8` `00` `9F` `E5` `F8` `10` `9F` `E5` `00` `10` `41` `E0` `16`
+    - `0x3F9`: `8F` -> `90`
     - `0x414`: `E4` `11` `00` -> `04` `00` `09`
+    - `0x36DC`: `71` `FF` `FF` -> `C9` `32` `02`
 1. Open `newCode.bin` inside the `newCode` folder
 1. Copy everything inside the file
 1. Go back to `jEnesisDS.nds`
