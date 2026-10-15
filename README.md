@@ -7,20 +7,20 @@ An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds
 
 # Compiling
 
-## Installing apps
+### Installing apps
 
 1. Install [BlocksDS](https://blocksds.skylyrac.net/docs/setup/)
 1. Install a hex editor such as [HxD](https://mh-nexus.de/en/hxd/)
 1. Download [jEnesisDS v0.7.4](https://gamebrew.org/wiki/JEnesisDS) (the last version released)
 
-## Building code
+### Building code
 
 1. Open your terminal application (such as Command Prompt on Windows)
 1. Run `cd <path of this repo folder>`
 1. Run `cd newCode`
 1. Run `make` to build `newCode.bin`
 
-## Injecting new code
+### Injecting new code
 
 1. Open your hex editor
 1. Open `jEnesisDS.nds`
