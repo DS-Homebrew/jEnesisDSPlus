@@ -10,8 +10,8 @@ An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds
 ### Installing apps
 
 1. Install [BlocksDS](https://blocksds.skylyrac.net/docs/setup/)
+1. Install [Lunar IPS](https://www.romhacking.net/utilities/240/)
 1. Install a hex editor such as [HxD](https://mh-nexus.de/en/hxd/)
-1. Install [Lunar IPS](https://www.romhacking.net/utilities/240/) if you want the game to display on the bottom screen
 1. Download [jEnesisDS v0.7.4](https://gamebrew.org/wiki/JEnesisDS) (the last version released)
 
 ### Building code
@@ -23,20 +23,15 @@ An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds
 
 ### Injecting new code
 
+1. Make a copy of `jEnesisDS.nds` named `jEnesisDSPlus.nds`
+1. Apply the `jEnesisDSPlus.ips` patch to `jEnesisDSPlus.nds`
 1. Open your hex editor
-1. Open `jEnesisDS.nds`
-1. Go to these offsets and change the following bytes:
-    - `0x2F0`: `F8 10 9F E5 B4 20 9F E5 F4 40 9F E5 1F` -> `B8 00 9F E5 F8 10 9F E5 00 10 41 E0 16`
-    - `0x3F9`: `8F` -> `90`
-    - `0x414`: `E4 11 00` -> `04 00 09`
-    - `0x1FF8`: `04 00 A0 E1` -> `83 38 02 EB`
-    - `0x36DC`: `71 FF FF` -> `C9 32 02`
-    - `0x4A24`: `94 30 9F E5` -> `F9 2D 02 EA`
+1. Open `jEnesisDSPlus.nds`
 1. Open `newCode.bin` inside the `newCode` folder
 1. Copy everything inside the file
-1. Go back to `jEnesisDS.nds`
+1. Go back to `jEnesisDSPlus.nds`
 1. Go to offset `0x90204` and paste-write over the `00` bytes with the copied data from `newCode.bin`
-1. Save as a new file called `jEnesisDSPlus.nds`
+1. Save `jEnesisDSPlus.nds`
 
 ### Displaying the game on the bottom screen
 
