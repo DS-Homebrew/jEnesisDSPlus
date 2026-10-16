@@ -1,5 +1,13 @@
 # jEnesisDS Plus
 
+Screenshots taken with NO$GBA
+
+![Sonic 3D Blast](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/Sonic3DBlast.png)
+![Toy Story](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/ToyStory.png)
+![Super Street Fighter II: The New Challengers](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/SSFII.png)
+![Sonic Delta Reloaded](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/SonicDeltaReloaded.png)
+![Earthion](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/Earthion.png)
+
 An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds new features such as:
 
 - Support for ROMs up to 4MB (if running on DS debug consoles) or 7.5MB (if running on DSi consoles)
