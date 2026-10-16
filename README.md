@@ -11,7 +11,7 @@ Screenshots taken with NO$GBA
 An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds new features such as:
 
 - Support for ROMs up to 4MB (if running on DS debug consoles) or 7.5MB (if running on DSi consoles)
-    - On DSi, the SEGA mapper (aka SSF2 mapper) emulation is implemented in order for ROMs above 4MB to run
+    - On DSi, SEGA mapper (aka SSF2 mapper) emulation is implemented in order for ROMs above 4MB to run
 - ARGV support, allowing a ROM to start when passed from a homebrew launcher (such as [**TW**i**L**ight Menu++](https://github.com/DS-Homebrew/TWiLightMenu))
 
 # Compiling
