@@ -114,7 +114,7 @@ saveArgv_loop2:	@ copy argv[1] to argvRomPath
 
 saveArgv_continue:
 	ldr		r0, =0x2098F70
-	mov		r1, #256
+	mov		r1, #512
 	bl		boot_memClr
 	b		mainCode
 .pool
