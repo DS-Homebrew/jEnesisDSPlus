@@ -13,6 +13,7 @@ An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds
 - Support for ROMs up to 4MB (if running on DS debug consoles) or 7.5MB (if running on DSi consoles)
     - On DSi, SEGA mapper (aka SSF2 mapper) emulation is implemented in order for ROMs above 4MB to run
 - ARGV support, allowing a ROM to start when passed from a homebrew launcher (such as [**TW**i**L**ight Menu++](https://github.com/DS-Homebrew/TWiLightMenu))
+- FPS counter displays with the user-set color
 
 # Compiling
 
@@ -48,5 +49,7 @@ An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds
 1. Apply the `macroMode.ips` patch to `jEnesisDSPlus_macro.nds`
 
 # Credits
-- Lordus: Developer of the original jEnesisDS emulator
+- [Rocket Robz](https://github.com/RocketRobz): Improvements made to jEnesisDS
+- budmelvin: [HTML to 15-bit color converter](http://www.budmelvin.com/dev/15bitconverter.html) used for adding new colors
 - [xonn83](https://github.com/xonn83): Bottom screen patch
+- Lordus: Developer of the original jEnesisDS emulator

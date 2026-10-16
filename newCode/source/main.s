@@ -116,6 +116,7 @@ saveArgv_continue:
 	ldr		r0, =0x2098F70
 	mov		r1, #512
 	bl		boot_memClr
+	bl		applyUserPalette
 	b		mainCode
 .pool
 argvRomPath:
