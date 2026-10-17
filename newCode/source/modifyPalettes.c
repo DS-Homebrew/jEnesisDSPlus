@@ -5,7 +5,7 @@
 u16* fpsCounterPalette = (u16*)0x02087468;
 
 static u16 fpsCounterPalettes[16][2] = {
-	{0x4E0C, 0x24A0}, // 0 = Gray
+	{0x4E0C, 0x28A0}, // 0 = Gray
 	{0x0137, 0x0048}, // 1 = Brown
 	{0x0C1F, 0x0009}, // 2 = Red
 	{0x7DFF, 0x2011}, // 3 = Pink
