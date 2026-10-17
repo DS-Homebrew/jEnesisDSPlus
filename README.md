@@ -4,6 +4,7 @@ Screenshots taken with NO$GBA
 
 ![Sonic 3D Blast](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/Sonic3DBlast.png)
 ![Toy Story](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/ToyStory.png)
+![Sonic Movie 3 Promo](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/SonicMovie3Promo.png)
 ![Super Street Fighter II: The New Challengers](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/SSFII.png)
 ![Sonic Delta Reloaded](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/SonicDeltaReloaded.png)
 ![Earthion](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/Earthion.png)
