@@ -16,6 +16,8 @@ An improved version of jEnesisDS (a SEGA Genesis/Mega Drive emulator) which adds
 - ARGV support, allowing a ROM to start when passed from a homebrew launcher (such as [**TW**i**L**ight Menu++](https://github.com/DS-Homebrew/TWiLightMenu))
 - FPS counter displaying with the user-set color
 
+As the source code for jEnesisDS was never made public, this was achieved with ASM patches.
+
 **NOTE:** Certain bugs (such as certain sprites not being updated without holding `X`, sound playing a little off, graphics not displaying properly for some games, etc.) come from the original jEnesisDS, and will (likely) not be fixed.
 
 # Compiling
