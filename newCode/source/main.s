@@ -183,7 +183,7 @@ checkRomBankRegister:
 @---------------------------------------------------------------------------------
 mdExtSupport:
 	adr		r0, mdExt
-	mov		r1, r4
+	add		r1, r4, #1
 	bl		checkIf2CharExt
 	cmp		r0, #0
 	beq		0x20031DC

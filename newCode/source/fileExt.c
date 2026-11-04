@@ -12,14 +12,11 @@ void changeExtToSrm(char* filename, const u8 len) {
 }
 
 int checkIf2CharExt(char* extToCheck, char* filenameExt) {
-	if (
-		filenameExt[1] == extToCheck[0]
-	&&	filenameExt[2] == extToCheck[1]
-	&&	filenameExt[3] == extToCheck[2]
-	&&	filenameExt[4] == extToCheck[3]
-	) {
-		return 0;
+	for (u8 i = 0; i < 4; i++) {
+		if (extToCheck[i] != filenameExt[i]) {
+			return 5;
+		}
 	}
 
-	return 5;
+	return 0;
 }
