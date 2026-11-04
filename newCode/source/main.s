@@ -17,6 +17,7 @@
 	b		checkRomBankRegister
 	b		changeExtToSrm
 	b		mdExtSupport
+	b		regionHexFixer
 @---------------------------------------------------------------------------------
 newInit:
 	ldr		r0, =0x04004000	@ Check for DSi mode
@@ -193,4 +194,15 @@ mdExt:
 .byte 0x6D @ m
 .byte 0x64 @ d
 .byte 0
+@---------------------------------------------------------------------------------
+regionHexFixer: @ Convert hex to ASCII char
+	ldrb	r2, [r1,#0x1F0]
+	cmp		r2, #0x01
+	bxlt	lr
+	cmpge	r2, #0x09
+	addle	r2, #0x30
+	bxle	lr
+	cmpgt	r2, #0x0F
+	addle	r2, #0x37
+	bx		lr
 @---------------------------------------------------------------------------------
