@@ -15,6 +15,8 @@
 	b		loadRomFromArgv
 	b		copyFirst4MBofROM
 	b		checkRomBankRegister
+	b		changeExtToSrm
+	b		mdExtSupport
 @---------------------------------------------------------------------------------
 newInit:
 	ldr		r0, =0x04004000	@ Check for DSi mode
@@ -178,4 +180,17 @@ checkRomBankRegister:
 	bl		loadRomBank
 	pop		{pc}
 .pool
+@---------------------------------------------------------------------------------
+mdExtSupport:
+	adr		r0, mdExt
+	mov		r1, r4
+	bl		checkIf2CharExt
+	cmp		r0, #0
+	beq		0x20031DC
+	b		0x2003248
+mdExt:
+.byte 0x2E @ .
+.byte 0x6D @ m
+.byte 0x64 @ d
+.byte 0
 @---------------------------------------------------------------------------------
