@@ -1,5 +1,9 @@
 # jEnesisDS Plus
 
+<a href="https://gbatemp.net/threads/jenesisds-plus-an-improved-version-of-jenesisds-sega-genesis-megadrive-emulator-for-ds-i.685449/">
+ <img src="https://img.shields.io/badge/GBAtemp-Thread-blue.svg" alt="GBAtemp Thread">
+</a>
+
 Screenshots taken with NO$GBA
 
 ![Sonic 3D Blast](https://github.com/DS-Homebrew/jenesisDSPlus/blob/main/screenshots/Sonic3DBlast.png)
